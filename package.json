@@ -1,0 +1,15 @@
+{
+  "name": "galleryappreg",
+  "version": "1.0.0",
+  "description": "Gallery App Registration tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "author": "Lazar Matrak",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.12.0"
+  }
+}
