@@ -1,18 +1,20 @@
 /// <reference types="cypress" />
 
-import Register from '../../page_objects/register'
-import { faker } from '@faker-js/faker';
+import Register from "../../page_objects/register";
+import { faker } from "@faker-js/faker";
 const register = new Register();
 
-
-let firstName = faker.person.firstName();
-let lastName = faker.person.lastName();
-let email = faker.internet.email({firstName:firstName,lastName:lastName});
-let password = faker.internet.password();
-
-
-describe("Gallery App Registration test suite - POSITIVE", () => {
+describe("Gallery App Registration test cases", () => {
   context("Positive Register test case", () => {
+    //generate user for positive test case
+    let firstName = faker.person.firstName();
+    let lastName = faker.person.lastName();
+    let email = faker.internet.email({
+      firstName: firstName,
+      lastName: lastName,
+    });
+    let password = faker.internet.password();
+
     beforeEach(() => {
       cy.visit(Cypress.config("baseUrl"));
     });
@@ -24,7 +26,6 @@ describe("Gallery App Registration test suite - POSITIVE", () => {
       register.passwordConfirmInputField.type(password);
       register.termsCheckbox.check();
       register.submitBtn.click();
-      
     });
   });
 
@@ -36,9 +37,11 @@ describe("Gallery App Registration test suite - POSITIVE", () => {
     //generating new user because the email from the successfull login is taken already
     let firstName = faker.person.firstName();
     let lastName = faker.person.lastName();
-    let email = faker.internet.email({firstName:firstName,lastName:lastName});
+    let email = faker.internet.email({
+      firstName: firstName,
+      lastName: lastName,
+    });
     let password = faker.internet.password();
-
 
     it("First Name - Empty field", () => {
       register.lastNameInputField.type(lastName);
