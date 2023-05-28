@@ -1,18 +1,30 @@
 /// <reference types="cypress" />
-const password = "newpassword123";
+
+import Register from '../../page_objects/register'
+import { faker } from '@faker-js/faker';
+const register = new Register();
+
+
+let firstName = faker.person.firstName();
+let lastName = faker.person.lastName();
+let email = faker.internet.email({firstName:firstName,lastName:lastName});
+let password = faker.internet.password();
+
+
 describe("Gallery App Registration test suite - POSITIVE", () => {
   context("Positive Register test case", () => {
     beforeEach(() => {
       cy.visit(Cypress.config("baseUrl"));
     });
     it("Successfully register user", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#last-name").type("Matrak");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password").type(password);
-      cy.get("#password-confirmation").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.firstNameInputField.type(firstName);
+      register.lastNameInputField.type(lastName);
+      register.emailInputField.type(email);
+      register.passwordInputField.type(password);
+      register.passwordConfirmInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
+      
     });
   });
 
@@ -21,62 +33,70 @@ describe("Gallery App Registration test suite - POSITIVE", () => {
       cy.visit(Cypress.config("baseUrl"));
     });
 
+    //generating new user because the email from the successfull login is taken already
+    let firstName = faker.person.firstName();
+    let lastName = faker.person.lastName();
+    let email = faker.internet.email({firstName:firstName,lastName:lastName});
+    let password = faker.internet.password();
+
+
     it("First Name - Empty field", () => {
-      cy.get("#last-name").type("Matrak");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password").type(password);
-      cy.get("#password-confirmation").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.lastNameInputField.type(lastName);
+      register.emailInputField.type(email);
+      register.passwordInputField.type(password);
+      register.passwordConfirmInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
       cy.wait(2000);
     });
 
     it("Last Name - Empty field", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password").type(password);
-      cy.get("#password-confirmation").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.firstNameInputField.type(firstName);
+      register.emailInputField.type(email);
+      register.passwordInputField.type(password);
+      register.passwordConfirmInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
       cy.wait(2000);
     });
 
     it("Email - Empty field", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#last-name").type("Matrak");
-      cy.get("#password").type(password);
-      cy.get("#password-confirmation").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.firstNameInputField.type(firstName);
+      register.lastNameInputField.type(lastName);
+      register.passwordInputField.type(password);
+      register.passwordConfirmInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
       cy.wait(2000);
     });
 
     it("Password - Empty field", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#last-name").type("Matrak");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password-confirmation").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.firstNameInputField.type(firstName);
+      register.lastNameInputField.type(lastName);
+      register.emailInputField.type(email);
+      register.passwordConfirmInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
       cy.wait(2000);
     });
 
     it("Password Confirmation - Empty field", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#last-name").type("Matrak");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password").type(password);
-      cy.get(".form-check-input").check();
-      cy.get(".btn").click();
+      register.firstNameInputField.type(firstName);
+      register.lastNameInputField.type(lastName);
+      register.emailInputField.type(email);
+      register.passwordInputField.type(password);
+      register.termsCheckbox.check();
+      register.submitBtn.click();
       cy.wait(2000);
     });
 
     it("Terms and Agreement - Not check", () => {
-      cy.get("#first-name").type("Lazar");
-      cy.get("#last-name").type("Matrak");
-      cy.get("#email").type("warclock@gmail.com");
-      cy.get("#password").type(password);
-      cy.get("#password-confirmation").type(password);
+      register.firstNameInputField.type(firstName);
+      register.lastNameInputField.type(lastName);
+      register.emailInputField.type(email);
+      register.passwordInputField.type(password);
+      register.passwordConfirmInputField.type(password);
+      register.submitBtn.click();
       cy.wait(2000);
     });
   });

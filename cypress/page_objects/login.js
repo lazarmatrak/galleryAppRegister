@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 class Login{
 
     get loginInputField(){
@@ -11,6 +13,8 @@ class Login{
     get submitBtn(){
         return cy.get('.btn');
     }
+
+
     loginUser(email,password){
         this.loginInputField.type(email);
         this.passwordInputField.type(password);
@@ -19,4 +23,4 @@ class Login{
 
 }
 
-export const login =  new Login();
+export default Login;
