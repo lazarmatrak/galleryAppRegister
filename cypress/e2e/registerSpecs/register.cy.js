@@ -16,7 +16,7 @@ describe("Gallery App Registration test cases", () => {
     let password = faker.internet.password();
 
     beforeEach(() => {
-      cy.visit(Cypress.config("baseUrl"));
+      cy.visit("/register");
     });
     it("Successfully register user", () => {
       register.firstNameInputField.type(firstName);
@@ -31,7 +31,7 @@ describe("Gallery App Registration test cases", () => {
 
   context("Gallery App Registration test suite - NEGATIVE", () => {
     beforeEach(() => {
-      cy.visit(Cypress.config("baseUrl"));
+      cy.visit("/register");
     });
 
     //generating new user because the email from the successfull login is taken already

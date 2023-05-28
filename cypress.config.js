@@ -6,6 +6,6 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
-    baseUrl: 'https://gallery-app.vivifyideas.com/register'
+    baseUrl: 'https://gallery-app.vivifyideas.com'
   },
 });
